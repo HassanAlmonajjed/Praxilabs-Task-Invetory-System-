@@ -105,5 +105,18 @@ public class InventoryTests
         Assert.AreEqual(0, _inventory.Size);
     }
 
+    [Test]
+    public void AddThreeItemsThenRemoveAllstack_SizeIsZero()
+    {
+        var item = Substitute.For<IInventoryItem>();
+        _inventory.Add(item);
+        _inventory.Add(item);
+        _inventory.Add(item);
+
+        _inventory.RemoveAffItems(item);
+
+        Assert.Zero(_inventory.Size);
+    }
+
     #endregion
 }

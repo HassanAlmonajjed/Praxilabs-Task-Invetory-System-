@@ -1,6 +1,5 @@
-using System;
-using System.Collections.Generic;
 using UnityEngine;
+using System.Collections.Generic;
 
 [CreateAssetMenu(menuName = "Inventory/Players Inventory")]
 public class Inventory : ScriptableObject, IInventory
@@ -44,11 +43,25 @@ public class Inventory : ScriptableObject, IInventory
     public void RemoveItem(IInventoryItem item)
     {
         if (!_availableItems.ContainsKey(item))
+        {
             Debug.LogWarning("trying to removing item which is not exsit!");
+            return;
+        }
 
         if (_availableItems[item] > 1)
             _availableItems[item]--;
         else
             _availableItems.Remove(item);
+    }
+
+    public void RemoveAffItems(IInventoryItem item)
+    {
+        if (!_availableItems.ContainsKey(item))
+        {
+            Debug.LogWarning("trying to removing item which is not exsit!");
+            return;
+        }
+
+        _availableItems.Remove(item);
     }
 }
