@@ -19,14 +19,7 @@ public class InventoryTests
         _inventory.Clear();
     }
 
-    [Test]
-    public void AddNewItemToEmptyInventory_InventorySizeOne()
-    {
-        var item = Resources.Load<InventoryItem>("Items/Sword");
-
-        _inventory.Add(item);
-        Assert.AreEqual(1, _inventory.Size);
-    }
+    #region Add Tests
 
     [Test]
     public void AddTwoItemsOfTheSameType_InventorySizeIsOneItemCountIncrease()
@@ -61,11 +54,56 @@ public class InventoryTests
     }
 
     [Test]
-    public void AddItemToEmptyInventory_ItemAdded()
+    public void AddItemToEmptyInventory_ItemAddedAndSizeIsOne()
     {
         var item = Substitute.For<IInventoryItem>();
         bool hasAdded = _inventory.Add(item);
 
         Assert.IsTrue(hasAdded);
+        Assert.AreEqual(1, _inventory.Size);
     }
+
+    #endregion
+
+    #region Remove Tests
+
+    [Test]
+    public void AddItemThenRemoveIt_SizeIsZero()
+    {
+        var item = Substitute.For<IInventoryItem>();
+        _inventory.Add(item);
+
+        Assert.NotZero(_inventory.Size);
+
+        _inventory.RemoveItem(item);
+        Assert.Zero(_inventory.Size);
+    }
+
+    [Test]
+    public void AddTwoItemThenRemoveOne_SizeIsOneAndNumberOfItemsIsOne()
+    {
+        var item = Substitute.For<IInventoryItem>();
+        _inventory.Add(item);
+        _inventory.Add(item);
+
+        _inventory.RemoveItem(item);
+
+        Assert.AreEqual(1, _inventory.Size);
+
+    }
+
+    [Test]
+    public void AddTwoItemThenRemoveBoth_SizeIsZero()
+    {
+        var item = Substitute.For<IInventoryItem>();
+        _inventory.Add(item);
+        _inventory.Add(item);
+
+        _inventory.RemoveItem(item);
+        _inventory.RemoveItem(item);
+
+        Assert.AreEqual(0, _inventory.Size);
+    }
+
+    #endregion
 }

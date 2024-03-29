@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -39,4 +40,15 @@ public class Inventory : ScriptableObject, IInventory
     }
 
     public void Clear() => _availableItems.Clear();
+
+    public void RemoveItem(IInventoryItem item)
+    {
+        if (!_availableItems.ContainsKey(item))
+            Debug.LogWarning("trying to removing item which is not exsit!");
+
+        if (_availableItems[item] > 1)
+            _availableItems[item]--;
+        else
+            _availableItems.Remove(item);
+    }
 }
