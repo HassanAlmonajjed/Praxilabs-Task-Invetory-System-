@@ -8,5 +8,4 @@ public interface IInventory
     public int Capacity { get; set; }
 
     public bool Add(IInventoryItem inventoryItem);
-    public void Clear();
 }

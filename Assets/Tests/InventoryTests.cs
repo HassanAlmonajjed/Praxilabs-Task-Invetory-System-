@@ -14,10 +14,7 @@ public class InventoryTests
     }
 
     [TearDown]
-    public void TeardownInventory() 
-    {
-        _inventory.Clear();
-    }
+    public void TeardownInventory() => _inventory.Clear();
 
     #region Add Tests
 
@@ -33,6 +30,22 @@ public class InventoryTests
 
         Assert.AreEqual(1, _inventory.Size);
         Assert.AreEqual(2, _inventory.NumberOfItemsOf(item));
+    }
+
+    [Test]
+    public void AddTwoItemsOfDifferentTypes_InventorySizeIsTwo()
+    {
+        var itemA = Substitute.For<IInventoryItem>();
+        itemA.ItemType = ItemType.Armor;
+        _inventory.Add(itemA);
+
+        var itemB = Substitute.For<IInventoryItem>();
+        itemB.ItemType = ItemType.Potion;
+        _inventory.Add(itemB);
+
+        Assert.AreEqual(2, _inventory.Size);
+        Assert.AreEqual(1, _inventory.NumberOfItemsOf(itemA));
+        Assert.AreEqual(1, _inventory.NumberOfItemsOf(itemB));
     }
 
     [Test]
@@ -57,6 +70,8 @@ public class InventoryTests
     public void AddItemToEmptyInventory_ItemAddedAndSizeIsOne()
     {
         var item = Substitute.For<IInventoryItem>();
+        item.ItemType = ItemType.Armor;
+
         bool hasAdded = _inventory.Add(item);
 
         Assert.IsTrue(hasAdded);
@@ -113,7 +128,7 @@ public class InventoryTests
         _inventory.Add(item);
         _inventory.Add(item);
 
-        _inventory.RemoveAffItems(item);
+        _inventory.RemoveAllItems(item);
 
         Assert.Zero(_inventory.Size);
     }
