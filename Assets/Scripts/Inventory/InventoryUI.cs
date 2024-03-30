@@ -21,11 +21,14 @@ namespace PraxilabsTask
         {
             _inventory.CopyStartItems();
             foreach (var item in _inventory.AvailableItems)
-            {
-                var inventoryItemUI = Instantiate(_inventoryItemUIPrefab, _inventoryItemContainer);
-                inventoryItemUI.Setup(item.Key, item.Value);
-                inventoryItemUI.OnItemSelected += ItemClicked;
-            }
+                AddItem(item.Key, item.Value);
+        }
+
+        private void AddItem(InventoryItem item, int number)
+        {
+            var inventoryItemUI = Instantiate(_inventoryItemUIPrefab, _inventoryItemContainer);
+            inventoryItemUI.Setup(item, number);
+            inventoryItemUI.OnItemSelected += ItemClicked;
         }
 
         public void ItemClicked(InventoryItemUI inventoryItemUI)
@@ -49,9 +52,13 @@ namespace PraxilabsTask
             
         }
 
-        public void ItemUnSelected(InventoryItem inventoryItem)
+        public void Use()
         {
-
+            foreach (var item in _selectedItems)
+            {
+                item.Use();
+                _inventory.RemoveItem(item);
+            }
         }
     }
 }

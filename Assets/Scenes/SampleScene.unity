@@ -1433,6 +1433,7 @@ MonoBehaviour:
   _inventoryItemUIPrefab: {fileID: 5041392288806641517, guid: e29b8a46cd1c64c4495b0e605a837bd7,
     type: 3}
   _inventoryItemContainer: {fileID: 1996537065}
+  _maxSelectableItems: 2
 --- !u!1 &1996537064
 GameObject:
   m_ObjectHideFlags: 0
@@ -1611,6 +1612,41 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1924742687}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Use
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PraxilabsTask.InventoryUI, PraxilabsRuntime
+      objectReference: {fileID: 0}
+    - target: {fileID: 5110627982636419969, guid: 051cd93a60f14244aac9461671ff5996,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 6607596080637643624, guid: 051cd93a60f14244aac9461671ff5996,
         type: 3}
