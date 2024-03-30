@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 688d5dfd273d79141b02f8088ad571c7, type: 3}
   m_Name: Armor
   m_EditorClassIdentifier: 
-  _itemType: 1
-  _rarity: 0
-  _stat: 25
-  _stackSize: 10
+  <Icon>k__BackingField: {fileID: 21300000, guid: d659f7396cd57754eba78763cf986c51,
+    type: 3}
+  <ItemType>k__BackingField: 1
+  <Rarity>k__BackingField: 0
+  <Stat>k__BackingField: 10
+  <StackSize>k__BackingField: 5

@@ -1,11 +1,14 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Inventory/Inventory Item/Armor")]
-public class ArmorInventoryItem : InventoryItem
+namespace PraxilabsTask
 {
-
-    public override void Use()
+    [CreateAssetMenu(menuName = "Inventory/Inventory Item/Armor")]
+    public class ArmorInventoryItem : InventoryItem
     {
-        Debug.Log($"Player Armor increased by {_stat}");
+
+        public override void Use()
+        {
+            Debug.Log($"Player Armor increased by {Stat}");
+        }
     }
 }

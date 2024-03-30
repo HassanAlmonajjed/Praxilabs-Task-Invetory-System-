@@ -1,11 +1,15 @@
 using UnityEngine;
 
-public abstract class InventoryItem : ScriptableObject
+namespace PraxilabsTask
 {
-    [SerializeField] protected ItemType _itemType;
-    [SerializeField] protected Rarity _rarity;
-    [SerializeField] protected int _stat;
-    [SerializeField] protected int _stackSize;
+    public abstract class InventoryItem : ScriptableObject
+    {
+        [field: SerializeField] public Sprite Icon { get; private set; }
+        [field: SerializeField] public ItemType ItemType { get; set; }
+        [field: SerializeField] public Rarity Rarity { get; protected set; }
+        [field: SerializeField] public int Stat { get; protected set; }
+        [field: SerializeField] public int StackSize { get; protected set; }
 
-    public abstract void Use();
+        public abstract void Use();
+    }
 }

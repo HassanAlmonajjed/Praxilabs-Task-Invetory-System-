@@ -1,6 +1,6 @@
 {
     "name": "PraxilabsTests",
-    "rootNamespace": "",
+    "rootNamespace": "PraxilabsTaskTest",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
