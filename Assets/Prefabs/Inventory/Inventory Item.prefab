@@ -212,7 +212,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 309a6d94f34d22d41b446bd821223062, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _image: {fileID: 2659640384391914828}
+  _IconImage: {fileID: 2659640384391914828}
+  _frameImage: {fileID: 6228233675720993795}
+  _highlightFrame: {fileID: 21300000, guid: 9a38d34966735d24e9cda5ecb0a183bc, type: 3}
+  _normalFrame: {fileID: 21300000, guid: 4293f3f43e7a5524dbcb191b0ef09d9c, type: 3}
   _numberOfItems: {fileID: 2314749353614384625}
 --- !u!1 &4688591013300120105
 GameObject:
