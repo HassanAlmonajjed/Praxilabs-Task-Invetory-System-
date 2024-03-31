@@ -15,7 +15,6 @@ namespace PraxilabsTask
 
         private Button _button;
         public bool IsSelected { get; private set; }
-        private InventoryUI _inventoryUI;
         public InventoryItem InventoryItem { get; set; }
 
         public event Action<InventoryItemUI> OnItemSelected;
@@ -23,7 +22,6 @@ namespace PraxilabsTask
         private void Awake()
         {
             _button = GetComponent<Button>();
-            _inventoryUI = GetComponentInParent<InventoryUI>();
             _button.onClick.AddListener(OnItemClicked);
         }
 

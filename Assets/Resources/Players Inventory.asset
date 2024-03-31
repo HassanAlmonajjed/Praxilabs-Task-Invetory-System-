@@ -12,11 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67ed230f15b0beb46abf1498a05e8d2d, type: 3}
   m_Name: Players Inventory
   m_EditorClassIdentifier: 
-  _capacity: 3
+  _capacity: 10
   _startItems:
   - Item: {fileID: 11400000, guid: 7aff01382df4c1745b5f7cc5a3a362d4, type: 2}
     Count: 2
   - Item: {fileID: 11400000, guid: 6ce9553e18a95b740a6c0883d7b0dcd7, type: 2}
     Count: 1
   - Item: {fileID: 11400000, guid: 412737ae33231ce4d851098aba07d53b, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: a641f6e7439f0ae46b7a4b5b3a99fbcd, type: 2}
     Count: 1

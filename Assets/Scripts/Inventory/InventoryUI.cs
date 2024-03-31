@@ -7,6 +7,8 @@ namespace PraxilabsTask
     public class InventoryUI : MonoBehaviour
     {
         [SerializeField] private Inventory _inventory;
+        [SerializeField] private Inventory _otherInventory;
+        [SerializeField] private InventoryUI _otherInventoryIU;
         [SerializeField] private InventoryItemUI _inventoryItemUIPrefab;
         [SerializeField] private Transform _inventoryItemContainer;
         [SerializeField] private int _maxSelectableItems = 4;
@@ -24,7 +26,7 @@ namespace PraxilabsTask
             UpdateInventoryMenu();
         }
 
-        private void UpdateInventoryMenu()
+        public void UpdateInventoryMenu()
         {
             foreach (Transform item in _inventoryItemContainer)
                 Destroy(item.gameObject);
@@ -70,9 +72,9 @@ namespace PraxilabsTask
             _inventory.RemoveItem(item);
         });
 
-        public void DropOneItem() => ExecuteActionWithSelectedItems(item => _inventory.RemoveItem(item));
+        public void DropOne() => ExecuteActionWithSelectedItems(item => _inventory.RemoveItem(item));
 
-        public void DropAllItems() => ExecuteActionWithSelectedItems(item => _inventory.RemoveAllItems(item));
+        public void DropAll() => ExecuteActionWithSelectedItems(item => _inventory.RemoveAllItems(item));
 
         private void ExecuteActionWithSelectedItems(Action<InventoryItem> action)
         {
@@ -89,5 +91,13 @@ namespace PraxilabsTask
 
             _selectedItems.Clear();
         }
+
+        public void Move() => ExecuteActionWithSelectedItems(item => 
+        {
+            _otherInventory.Add(item, _inventory.NumberOfItemsOf(item));
+            _otherInventoryIU.UpdateInventoryMenu();
+
+            _inventory.RemoveAllItems(item);
+        });
     }
 }
