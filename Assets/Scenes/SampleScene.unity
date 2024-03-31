@@ -2794,13 +2794,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b675eb59756d3044eaffa8f8c36cf217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: 523b1d5a9e12b0043a96b1ea9655fa93, type: 2}
-  _otherInventory: {fileID: 11400000, guid: bd60397b8ee9c8f45975c0990fcddd3a, type: 2}
-  _otherInventoryIU: {fileID: 2032067431}
+  _maxSelectableItems: 4
+  _premierInventory: {fileID: 11400000, guid: 523b1d5a9e12b0043a96b1ea9655fa93, type: 2}
+  _secondaryInventory: {fileID: 11400000, guid: bd60397b8ee9c8f45975c0990fcddd3a,
+    type: 2}
+  _secondaryInventoryIU: {fileID: 2032067431}
   _inventoryItemUIPrefab: {fileID: 5041392288806641517, guid: e29b8a46cd1c64c4495b0e605a837bd7,
     type: 3}
   _inventoryItemContainer: {fileID: 1996537065}
-  _maxSelectableItems: 4
 --- !u!1 &1944463588
 GameObject:
   m_ObjectHideFlags: 0
@@ -3004,13 +3005,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b675eb59756d3044eaffa8f8c36cf217, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inventory: {fileID: 11400000, guid: bd60397b8ee9c8f45975c0990fcddd3a, type: 2}
-  _otherInventory: {fileID: 11400000, guid: 523b1d5a9e12b0043a96b1ea9655fa93, type: 2}
-  _otherInventoryIU: {fileID: 1924742687}
+  _maxSelectableItems: 4
+  _premierInventory: {fileID: 11400000, guid: bd60397b8ee9c8f45975c0990fcddd3a, type: 2}
+  _secondaryInventory: {fileID: 11400000, guid: 523b1d5a9e12b0043a96b1ea9655fa93,
+    type: 2}
+  _secondaryInventoryIU: {fileID: 1924742687}
   _inventoryItemUIPrefab: {fileID: 5041392288806641517, guid: e29b8a46cd1c64c4495b0e605a837bd7,
     type: 3}
   _inventoryItemContainer: {fileID: 1109310182}
-  _maxSelectableItems: 4
 --- !u!1001 &6288107147698263505
 PrefabInstance:
   m_ObjectHideFlags: 0

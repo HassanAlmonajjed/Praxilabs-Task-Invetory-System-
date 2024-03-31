@@ -6,12 +6,14 @@ namespace PraxilabsTask
 {
     public class InventoryUI : MonoBehaviour
     {
-        [SerializeField] private Inventory _inventory;
-        [SerializeField] private Inventory _otherInventory;
-        [SerializeField] private InventoryUI _otherInventoryIU;
+        [SerializeField] private int _maxSelectableItems = 4;
+
+        [Header("UI")]
+        [SerializeField] private Inventory _premierInventory;
+        [SerializeField] private Inventory _secondaryInventory;
+        [SerializeField] private InventoryUI _secondaryInventoryIU;
         [SerializeField] private InventoryItemUI _inventoryItemUIPrefab;
         [SerializeField] private Transform _inventoryItemContainer;
-        [SerializeField] private int _maxSelectableItems = 4;
 
         private readonly List<InventoryItem> _selectedItems = new();
 
@@ -22,7 +24,7 @@ namespace PraxilabsTask
 
         private void InitializeInventoryMenu()
         {
-            _inventory.CopyStartItems();
+            _premierInventory.CopyStartItems();
             UpdateInventoryMenu();
         }
 
@@ -31,7 +33,7 @@ namespace PraxilabsTask
             foreach (Transform item in _inventoryItemContainer)
                 Destroy(item.gameObject);
 
-            foreach (var item in _inventory.AvailableItems)
+            foreach (var item in _premierInventory.AvailableItems)
                 DrawItem(item.Key, item.Value);
         }
 
@@ -66,16 +68,35 @@ namespace PraxilabsTask
         /// <summary>
         /// Called from "Use Button" to use the selected items
         /// </summary>
-        public void Use() => ExecuteActionWithSelectedItems(item => 
+        public void Use() => ExecuteActionWithSelectedItems(item =>
         {
             item.Use();
-            _inventory.RemoveItem(item);
+            _premierInventory.RemoveItem(item);
         });
 
-        public void DropOne() => ExecuteActionWithSelectedItems(item => _inventory.RemoveItem(item));
+        /// <summary>
+        /// Called from "Drop Button" to use the selected items
+        /// </summary>
+        public void DropOne() => ExecuteActionWithSelectedItems(item => _premierInventory.RemoveItem(item));
 
-        public void DropAll() => ExecuteActionWithSelectedItems(item => _inventory.RemoveAllItems(item));
+        /// <summary>
+        /// Called from "Drop All Button" to use the selected items
+        /// </summary>
+        public void DropAll() => ExecuteActionWithSelectedItems(item => _premierInventory.RemoveAllItems(item));
 
+        /// <summary>
+        /// Called from "Move Button" to use the selected items
+        /// </summary>
+        public void Move() 
+        {
+            ExecuteActionWithSelectedItems(item =>
+            {
+                _secondaryInventory.Add(item, _premierInventory.NumberOfItemsOf(item));
+                _premierInventory.RemoveAllItems(item);
+            });
+
+            _secondaryInventoryIU.UpdateInventoryMenu();
+        }
         private void ExecuteActionWithSelectedItems(Action<InventoryItem> action)
         {
             if (_selectedItems.Count == 0)
@@ -91,13 +112,5 @@ namespace PraxilabsTask
 
             _selectedItems.Clear();
         }
-
-        public void Move() => ExecuteActionWithSelectedItems(item => 
-        {
-            _otherInventory.Add(item, _inventory.NumberOfItemsOf(item));
-            _otherInventoryIU.UpdateInventoryMenu();
-
-            _inventory.RemoveAllItems(item);
-        });
     }
 }
