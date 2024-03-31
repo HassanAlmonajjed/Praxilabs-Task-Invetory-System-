@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 namespace PraxilabsTask
 {
@@ -63,19 +64,26 @@ namespace PraxilabsTask
         /// <summary>
         /// Called from "Use Button" to use the selected items
         /// </summary>
-        public void Use()
+        public void Use() => ExecuteActionWithSelectedItems(item => 
+        {
+            item.Use();
+            _inventory.RemoveItem(item);
+        });
+
+        public void DropOneItem() => ExecuteActionWithSelectedItems(item => _inventory.RemoveItem(item));
+
+        public void DropAllItems() => ExecuteActionWithSelectedItems(item => _inventory.RemoveAllItems(item));
+
+        private void ExecuteActionWithSelectedItems(Action<InventoryItem> action)
         {
             if (_selectedItems.Count == 0)
             {
                 Debug.Log("Select at least one item to use");
                 return;
             }
-            
+
             foreach (var item in _selectedItems)
-            {
-                item.Use();
-                _inventory.RemoveItem(item);
-            }
+                action(item);
 
             UpdateInventoryMenu();
 

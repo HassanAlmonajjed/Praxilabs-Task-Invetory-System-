@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dfe63c47f1d25be49938752b1b360717, type: 3}
   m_Name: Potion
   m_EditorClassIdentifier: 
-  <Icon>k__BackingField: {fileID: 0}
-  <ItemType>k__BackingField: 0
-  <Rarity>k__BackingField: 0
-  <Stat>k__BackingField: 0
-  <StackSize>k__BackingField: 0
+  <Icon>k__BackingField: {fileID: 21300000, guid: 2d089513ae4adfc48a683c362ad9992c,
+    type: 3}
+  <ItemType>k__BackingField: 2
+  <Rarity>k__BackingField: 2
+  <Stat>k__BackingField: 8
+  <StackSize>k__BackingField: 1
