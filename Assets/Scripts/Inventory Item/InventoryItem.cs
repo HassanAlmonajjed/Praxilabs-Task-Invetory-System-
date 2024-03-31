@@ -12,4 +12,19 @@ namespace PraxilabsTask
 
         public abstract void Use();
     }
+
+    public enum ItemType
+    {
+        Weapon,
+        Armor,
+        Potion,
+        Bag
+    }
+
+    public enum Rarity
+    {
+        Common,
+        Rare,
+        Epic
+    }
 }
