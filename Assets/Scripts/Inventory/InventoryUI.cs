@@ -20,11 +20,19 @@ namespace PraxilabsTask
         private void InitializeInventoryMenu()
         {
             _inventory.CopyStartItems();
-            foreach (var item in _inventory.AvailableItems)
-                AddItem(item.Key, item.Value);
+            UpdateInventoryMenu();
         }
 
-        private void AddItem(InventoryItem item, int number)
+        private void UpdateInventoryMenu()
+        {
+            foreach (Transform item in _inventoryItemContainer)
+                Destroy(item.gameObject);
+
+            foreach (var item in _inventory.AvailableItems)
+                DrawItem(item.Key, item.Value);
+        }
+
+        private void DrawItem(InventoryItem item, int number)
         {
             var inventoryItemUI = Instantiate(_inventoryItemUIPrefab, _inventoryItemContainer);
             inventoryItemUI.Setup(item, number);
@@ -49,16 +57,29 @@ namespace PraxilabsTask
                 _selectedItems.Add(inventoryItemUI.InventoryItem);
                 inventoryItemUI.Toggle();
             }
-            
+
         }
 
+        /// <summary>
+        /// Called from "Use Button" to use the selected items
+        /// </summary>
         public void Use()
         {
+            if (_selectedItems.Count == 0)
+            {
+                Debug.Log("Select at least one item to use");
+                return;
+            }
+            
             foreach (var item in _selectedItems)
             {
                 item.Use();
                 _inventory.RemoveItem(item);
             }
+
+            UpdateInventoryMenu();
+
+            _selectedItems.Clear();
         }
     }
 }
